@@ -1,6 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 
+import { HiMenu } from "react-icons/hi"
+
 export const metadata: Metadata = {
   title: 'Drogaria Oliveira',
   description: 'Alguma frase',
@@ -44,6 +46,11 @@ const Nav = () => (
   <nav className="gap-2 flex" >
     <a href="/">home</a>
     <a href="/produtos">produtos</a>
-  </nav>
 
+    <div className="w-5">
+      <HiMenu className=" w-full h-full" />
+    </div>
+  </nav>
 )
+
+
