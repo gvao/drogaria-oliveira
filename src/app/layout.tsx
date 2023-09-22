@@ -31,8 +31,19 @@ export default function RootLayout({
 
 const Header = () => (
   <header
-    className="py-2 px-4"
+    className="py-2 px-4 border container flex justify-between"
   >
-    header
+    <h1>Dorgaria Oliveira</h1>
+
+    <Nav />
+
   </header>
+)
+
+const Nav = () => (
+  <nav className="gap-2 flex" >
+    <a href="/">home</a>
+    <a href="/produtos">produtos</a>
+  </nav>
+
 )
