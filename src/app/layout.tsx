@@ -1,11 +1,13 @@
+import { Logotipo } from '@/components/patterns'
 import './globals.css'
 import type { Metadata } from 'next'
 
-import { HiMenu } from "react-icons/hi"
+import { HiMenu, HiShoppingCart } from "react-icons/hi"
+import { Link } from '@/components/basics/link'
 
 export const metadata: Metadata = {
   title: 'Drogaria Oliveira',
-  description: 'Alguma frase',
+  description: 'O cuidado que sua saúde merece!',
 }
 
 export default function RootLayout({
@@ -17,7 +19,7 @@ export default function RootLayout({
 
   return (
     <html lang="pt-Br">
-      <body className={``}>
+      <body className={`bg-cyan-100`}>
 
         <Header />
 
@@ -33,9 +35,8 @@ export default function RootLayout({
 
 const Header = () => (
   <header
-    className="py-2 px-4 border container flex justify-between"
+    className="py-2 px-4 bg-cyan-200 container flex justify-between items-center sticky top-0 z-20"
   >
-    <h1>Dorgaria Oliveira</h1>
 
     <Nav />
 
@@ -43,13 +44,20 @@ const Header = () => (
 )
 
 const Nav = () => (
-  <nav className="gap-2 flex" >
-    <a href="/">home</a>
-    <a href="/produtos">produtos</a>
+  <nav className="gap-2 flex justify-between items-stretch w-full h-7" >
 
-    <div className="w-5">
-      <HiMenu className=" w-full h-full" />
-    </div>
+    <HiMenu className="h-full w-fit" />
+
+    <Logotipo className="border-cyan-950" />
+
+    <Link href={{
+      query: {
+        showShopCart: true,
+      }
+    }} >
+      <HiShoppingCart className="h-full w-fit" />
+    </Link>
+
   </nav>
 )
 
