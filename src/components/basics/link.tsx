@@ -3,11 +3,13 @@ import { ReactNode } from "react"
 
 interface LinkProps extends NextLinkProps {
     children: ReactNode
+    className?: string
 }
 
-export const Link = ({ href, children }: LinkProps) => (
+export const Link = ({ href, children, ...props }: LinkProps) => (
     <NextLink
         href={href}
+        {...props}
     >
         {children}
     </NextLink>

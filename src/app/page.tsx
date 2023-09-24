@@ -5,6 +5,26 @@ import { DetailedHTMLProps, FormHTMLAttributes } from "react"
 import { twMerge } from "tailwind-merge"
 import { Logotipo } from "@/components/patterns"
 
+export type Product = {
+  src: string,
+  price: string,
+  title: string,
+  description?: string,
+}
+
+export const data: Product[] = [
+  { src: 'products/giovanna.png', price: "25,00", title: "Giovanna Baby Desodorante aerosol pac c/2", description: "Desodorante incrivel da Giovanna Baby" },
+  { src: 'products/giovanna.png', price: "14,00", title: "Giovanna Baby Desodorante" },
+  { src: 'products/giovanna.png', price: "7,50", title: "Giovanna Baby Desodorante" },
+]
+
+interface ProductProps {
+  title: string
+  price: string
+  description?: string
+  src: string
+}
+
 export default function Home() {
   return (
     <main className="container bg-cyan-50 py-10">
@@ -30,38 +50,29 @@ const Header = () => (
   </header>
 )
 
-const data = [
-  { src: 'products/giovanna.png', price: "25,00", title: "Giovanna Baby Desodorante aerosol pac c/2", description: "Desodorante incrivel da Giovanna Baby" },
-  { src: 'products/giovanna.png', price: "14,00", title: "Giovanna Baby Desodorante" },
-  { src: 'products/giovanna.png', price: "7,50", title: "Giovanna Baby Desodorante" },
-]
-
 const ProductsSection = () => (
   <section className="container py-10 px-4 space-y-3">
 
-
     <Subtitle >Produtos</Subtitle>
 
-    <FormSearch className="sticky top-1 bg-cyan-200 rounded shadow-lg z-20" />
+    <FormSearch />
 
     <ul className="grid grid-cols-2 gap-2" >
 
       {data
         .map((product, i) => (
-          <Product key={i} price={product.price} title={product.title} description={product.description} src={product.src} />
+          <Product
+            key={i}
+            price={product.price}
+            title={product.title}
+            description={product.description}
+            src={product.src} />
         ))
       }
     </ul>
 
   </section>
 )
-
-interface ProductProps {
-  title: string
-  price: string
-  description?: string
-  src: string
-}
 
 const Product = ({ title, price, description, src }: ProductProps) => (
 
