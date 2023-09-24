@@ -5,8 +5,6 @@ import type { Metadata } from 'next'
 import { HiMenu, HiShoppingCart, HiViewGrid } from "react-icons/hi"
 import { Link } from '@/components/basics/link'
 
-import { LayoutProps } from '../../.next/types/app/layout'
-
 export const metadata: Metadata = {
   title: 'Drogaria Oliveira',
   description: 'O cuidado que sua saúde merece!',
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: LayoutProps) {
+}: { children: React.ReactNode }) {
 
   return (
     <html lang="pt-Br">
