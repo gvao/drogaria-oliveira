@@ -1,6 +1,7 @@
 import { Subtitle, Title } from "@/components/typografy"
 import { Button } from "@/components/basics/button"
 import { Product, products } from "@/store/products"
+import PopupCard from "@/components/patterns/popup"
 
 interface CartItemProps {
     title: string
@@ -24,8 +25,13 @@ export default function ShopCartPage() {
                 <Button className="shadow-lg bg-cyan-600 px-6 py-4" >
                     Enviar Pedido
                 </Button>
-                
             </div>
+
+            <PopupCard.Root>
+                <PopupCard.PopupCard>
+                    confirmar
+                </PopupCard.PopupCard>
+            </PopupCard.Root>
 
         </main>
     )
@@ -55,7 +61,7 @@ const CartResume = () => (
 
 const CartItems = ({ data }: { data: Product[] }) => (
     <section className="space-y-4" >
-        <Subtitle >Items</Subtitle>
+        <Subtitle >Itens</Subtitle>
 
         <ul className="flex flex-col gap-2">
             {data
