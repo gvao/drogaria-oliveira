@@ -1,23 +1,6 @@
 import { Subtitle, Title } from "@/components/typografy"
-import { Product, data } from "../page"
 import { Button } from "@/components/basics/button"
-
-
-export default function ShopCartPage() {
-
-
-    return (
-        <main className="container mt-10 px-4 space-y-5">
-
-            <Title>Carrinho</Title>
-
-            <CartItems data={data} />
-
-            <CartResume />
-
-        </main>
-    )
-}
+import { Product, products } from "@/store/products"
 
 interface CartItemProps {
     title: string
@@ -26,31 +9,52 @@ interface CartItemProps {
     description?: string
 }
 
+export default function ShopCartPage() {
+
+    return (
+        <main className="container mt-10 px-4 space-y-6">
+
+            <Title>Carrinho</Title>
+
+            <CartItems data={products} />
+
+            <CartResume />
+
+            <div id="actions" className="w-full flex justify-center">
+                <Button className="shadow-lg bg-cyan-600 px-6 py-4" >
+                    Enviar Pedido
+                </Button>
+                
+            </div>
+
+        </main>
+    )
+}
+
 const CartResume = () => (
     <section>
         <Subtitle>Resumo</Subtitle>
 
-        <table className="flex flex-col justify-between" > 
-            <thead>
-                <tr>
-                    <th>Subtotal</th>
-                    <th>Desconto</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>R$ 75,00</td>
-                    <td>R$ 15,00</td>
-                    <td>R$ 100,00</td>
-                </tr>
-            </tbody>
-        </table>
+        <ul className="flex flex-col py-4 gap-2">
+            <li className="w-full flex justify-between border-b-2 py-1" >
+                <span>Subtotal</span>
+                <span>R$ 75,00</span>
+            </li>
+            <li className="w-full flex justify-between border-b-2" >
+                <span>Desconto</span>
+                <span>R$ 100,00</span>
+            </li>
+            <li className="w-full flex justify-between border-b-2" >
+
+                <span>Total</span>
+                <span>R$ 15,00</span>
+            </li>
+        </ul>
     </section>
 )
 
 const CartItems = ({ data }: { data: Product[] }) => (
-    <section>
+    <section className="space-y-4" >
         <Subtitle >Items</Subtitle>
 
         <ul className="flex flex-col gap-2">
@@ -101,3 +105,4 @@ const CartItem = ({ title, src, price, description }: CartItemProps) => (
 
     </li>
 )
+

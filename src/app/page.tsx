@@ -4,19 +4,7 @@ import { HiSearch } from "react-icons/hi"
 import { DetailedHTMLProps, FormHTMLAttributes } from "react"
 import { twMerge } from "tailwind-merge"
 import { Logotipo } from "@/components/patterns"
-
-export type Product = {
-  src: string,
-  price: string,
-  title: string,
-  description?: string,
-}
-
-export const data: Product[] = [
-  { src: 'products/giovanna.png', price: "25,00", title: "Giovanna Baby Desodorante aerosol pac c/2", description: "Desodorante incrivel da Giovanna Baby" },
-  { src: 'products/giovanna.png', price: "14,00", title: "Giovanna Baby Desodorante" },
-  { src: 'products/giovanna.png', price: "7,50", title: "Giovanna Baby Desodorante" },
-]
+import { products, Product } from "../store/products"
 
 interface ProductProps {
   title: string
@@ -59,9 +47,9 @@ const ProductsSection = () => (
 
     <ul className="grid grid-cols-2 gap-2" >
 
-      {data
+      {products
         .map((product, i) => (
-          <Product
+          <ProductComponent
             key={i}
             price={product.price}
             title={product.title}
@@ -74,7 +62,7 @@ const ProductsSection = () => (
   </section>
 )
 
-const Product = ({ title, price, description, src }: ProductProps) => (
+const ProductComponent = ({ title, price, description, src }: ProductProps) => (
 
   <li className="flex flex-col justify-between items-stretch rounded overflow-hidden bg-cyan-100 shadow-md ">
     {/* <li className="flex flex-col justify-between items-stretch rounded overflow-hidden bg-cyan-100 shadow-md "> */}
