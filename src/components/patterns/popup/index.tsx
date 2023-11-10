@@ -1,8 +1,8 @@
-import { Root } from "./root"
 import { PopupCard } from "./popup"
+import PopupContextProvider from "@/components/patterns/popup/context"
 
 const Popup = {
-    Root,
+    Root: PopupContextProvider,
     PopupCard,
 }
 
