@@ -24,11 +24,19 @@ export default function RootLayout({
 
         <NavBar />
 
+        <Footer />
+
       </body>
     </html>
   )
 
 }
+
+const Footer = () => (
+  <footer className="p-14 max-h-24 items-center justify-center">
+    <Logotipo className="border-cyan-950 w-28 mx-auto" />
+  </footer>
+)
 
 const Header = () => (
   <header
