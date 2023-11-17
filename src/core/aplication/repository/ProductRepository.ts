@@ -4,6 +4,10 @@ import { Repository } from "./interface";
 export class ProductRepository implements Repository<Product> {
 	items: Product[] = [];
 
+	async getAll(): Promise<Product[]> {
+		return this.items
+	}
+
 	async getById(id: string): Promise<Product> {
         
 		if (typeof id !== "string") throw new Error("Invalid parameter");
