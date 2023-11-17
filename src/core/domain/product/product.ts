@@ -4,24 +4,29 @@ interface Entity {
 
 export default interface ProductInterface extends Entity {
 	title: string;
-	describe: string;
+	description: string;
 	price: number;
 	// createdAt: Date;
 }
 
 export class Product implements ProductInterface {
     createdAt: Date;
-    describe: string;
+    description: string;
     id: string;
     price: number;
     title: string;
 
-    constructor(){
-        this.title = "Product";
-        this.describe = "Product"
+    constructor({ price, title, description }: Props){
+        this.title = title;
+        this.description = description
+        this.price = price
         this.id = crypto.randomUUID()
-        this.price = 20
         this.createdAt = new Date();
     }
+}
 
+type Props = {
+    price: number
+    title: string
+    description: string
 }

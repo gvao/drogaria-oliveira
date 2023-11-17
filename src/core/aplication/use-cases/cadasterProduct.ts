@@ -1,4 +1,4 @@
-import { Product } from "../product/product";
+import { Product } from "../../domain/product/product";
 import { Repository } from "../repository/interface";
 
 export class CadasterProduct {
