@@ -2,17 +2,20 @@ import { Product } from "../product/product";
 
 export class ShopCart {
 	items: Product[] = [];
-	// private subtotal = 0;
+
+    get subtotal(): number {
+        let subtotal: number = 0
+        for(const product of this.items) {
+            subtotal += product.price
+        }
+        return subtotal;
+    }
 
 	addProduct(product: Product) {
 		this.items.push(product);
 	}
 
-	get subtotal(): number {
-        let subtotal: number = 0
-        for(const product of this.items) {
-            subtotal += product.price
-        }
-		return subtotal;
-	}
+    removeProductById(id: string) {
+        this.items = this.items.filter(item => item.id !== id)
+    }
 }
