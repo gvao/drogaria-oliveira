@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { ShopCart } from "./shopcart";
-import { Product } from "../product/product";
+import { Product } from "../../../domain/product/product";
+import { ShopCart } from "./shopCart";
 
 type ProductProps = {
 	title?: string;

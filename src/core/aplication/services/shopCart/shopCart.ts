@@ -1,4 +1,4 @@
-import { Product } from "../product/product";
+import { Product } from "../../../domain/product/product";
 
 export class ShopCart {
 	items: Product[] = [];
