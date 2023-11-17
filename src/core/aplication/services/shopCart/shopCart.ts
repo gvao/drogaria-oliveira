@@ -1,21 +1,39 @@
-import { Product } from "../../../domain/product/product";
+import { Product } from "@/core/domain/product/product";
+import { Repository } from "../../repository/interface";
+
+type Item = {
+    quantity: number
+    productId: string
+}
 
 export class ShopCart {
-	items: Product[] = [];
+	items: Item[] = [];
 
-    get subtotal(): number {
+    constructor(readonly repository: Repository<Product>) {}
+
+    async getSubtotal () {
         let subtotal: number = 0
-        for(const product of this.items) {
-            subtotal += product.price
+
+        for(const item of this.items) {
+            const product = await this.repository.getById(item.productId)
+            if(!product) throw new Error(`Product ${item.productId} not found`)
+            subtotal += product.price * item.quantity
         }
         return subtotal;
     }
 
-	addProduct(product: Product) {
-		this.items.push(product);
+	async addProduct({ productId, quantity }: Item) {
+        const product = await this.repository.getById(productId)
+
+        if(!product) throw new Error(`Product ${productId} not found`)
+
+		this.items.push({
+            productId,
+            quantity
+        });
 	}
 
-    removeProductById(id: string) {
-        this.items = this.items.filter(item => item.id !== id)
+    async removeProductById(id: string) {
+        this.items = this.items.filter(item => item.productId !== id)
     }
 }
