@@ -9,7 +9,7 @@ export default interface ProductInterface extends Entity {
 	// createdAt: Date;
 }
 
-export default class Product implements ProductInterface {
+export class Product implements ProductInterface {
     createdAt: Date;
     describe: string;
     id: string;
@@ -19,7 +19,7 @@ export default class Product implements ProductInterface {
     constructor(){
         this.title = "Product";
         this.describe = "Product"
-        this.id = "product_id"
+        this.id = crypto.randomUUID()
         this.price = 20
         this.createdAt = new Date();
     }

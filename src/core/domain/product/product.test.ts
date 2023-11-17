@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import Product from ".";
+import { Product } from "./product";
 
 describe('tenting product entity"', () => {
     
